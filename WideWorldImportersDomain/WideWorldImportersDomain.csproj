@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B4787B64-F405-4A95-831D-0B1C27210F92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WideWorldImportersDomain</RootNamespace>
+    <AssemblyName>WideWorldImportersDomain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuyingGroup.cs" />
+    <Compile Include="BuyingGroups_Archive.cs" />
+    <Compile Include="Cities_Archive.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="ColdRoomTemperature.cs" />
+    <Compile Include="ColdRoomTemperatures_Archive.cs" />
+    <Compile Include="Color.cs" />
+    <Compile Include="Colors_Archive.cs" />
+    <Compile Include="Countries_Archive.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="CustomerCategories_Archive.cs" />
+    <Compile Include="CustomerCategory.cs" />
+    <Compile Include="Customers_Archive.cs" />
+    <Compile Include="CustomerTransaction.cs" />
+    <Compile Include="DeliveryMethod.cs" />
+    <Compile Include="DeliveryMethods_Archive.cs" />
+    <Compile Include="Invoice.cs" />
+    <Compile Include="InvoiceLine.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderLine.cs" />
+    <Compile Include="PackageType.cs" />
+    <Compile Include="PackageTypes_Archive.cs" />
+    <Compile Include="PaymentMethod.cs" />
+    <Compile Include="PaymentMethods_Archive.cs" />
+    <Compile Include="People_Archive.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseOrder.cs" />
+    <Compile Include="PurchaseOrderLine.cs" />
+    <Compile Include="SpecialDeal.cs" />
+    <Compile Include="StateProvince.cs" />
+    <Compile Include="StateProvinces_Archive.cs" />
+    <Compile Include="StockGroup.cs" />
+    <Compile Include="StockGroups_Archive.cs" />
+    <Compile Include="StockItem.cs" />
+    <Compile Include="StockItemHolding.cs" />
+    <Compile Include="StockItemStockGroup.cs" />
+    <Compile Include="StockItems_Archive.cs" />
+    <Compile Include="StockItemTransaction.cs" />
+    <Compile Include="Supplier.cs" />
+    <Compile Include="SupplierCategories_Archive.cs" />
+    <Compile Include="SupplierCategory.cs" />
+    <Compile Include="Suppliers_Archive.cs" />
+    <Compile Include="SupplierTransaction.cs" />
+    <Compile Include="SystemParameter.cs" />
+    <Compile Include="TransactionType.cs" />
+    <Compile Include="TransactionTypes_Archive.cs" />
+    <Compile Include="VehicleTemperature.cs" />
+    <Compile Include="WideWorldImporters.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
