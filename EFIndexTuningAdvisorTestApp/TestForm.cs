@@ -1,6 +1,7 @@
 ﻿using EFIndexTuningAdvisor;
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using WideWorldImportersDomain;
@@ -67,6 +68,10 @@ namespace EFIndexTuningAdvisorTestApp
             {
                 var suggestions = (TestResultsForDisplay)e.Result;
 
+                frequentQueriesListView.Tag = suggestions.TopFrequentQueries;
+                timeConsumingQueriesListView.Tag = suggestions.TopTimeConsumingQueries;
+                slowestQueriesListView.Tag = suggestions.TopSlowestQueries;
+
                 // frequent queries
                 foreach (var q in suggestions.TopFrequentQueries)
                 {
@@ -90,9 +95,58 @@ namespace EFIndexTuningAdvisorTestApp
                 {
                     var item = slowestQueriesListView.Items.Add(q.sql);
                     item.Tag = q;
-                    item.SubItems.Add(q.time_in_ms.ToString("0.00"));
+                    item.SubItems.Add(q.avg_time_in_ms.ToString("0.00"));
                     item.ToolTipText = q.sql;
                 }
+            }
+        }
+
+        private void exportSQLForIndexCreationButton_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void exportTimeConsumingQueries_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "TXT File|*.txt";
+            saveFileDialog1.Title = "Save an Text File";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "" && timeConsumingQueriesListView.Tag != null)
+            {
+                var list = timeConsumingQueriesListView.Tag as List<EFQuery>;
+                File.WriteAllLines(saveFileDialog1.FileName, list.Select(q => string.Format("{0} ms : {1}", Math.Round(q.total_time_in_ms, 2), q.sql)));
+            }
+        }
+
+        private void exportSlowestQueriesButton_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "TXT File|*.txt";
+            saveFileDialog1.Title = "Save an Text File";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "" && slowestQueriesListView.Tag != null)
+            {
+                var list = slowestQueriesListView.Tag as List<EFQuery>;
+                File.WriteAllLines(saveFileDialog1.FileName, list.Select(q => string.Format("{0} ms : {1}", Math.Round(q.avg_time_in_ms, 2), q.sql)));
+            }
+        }
+
+        private void exportFrequestQueriesButton_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "TXT File|*.txt";
+            saveFileDialog1.Title = "Save an Text File";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "" && frequentQueriesListView.Tag != null)
+            {
+                var list = frequentQueriesListView.Tag as List<EFQuery>;
+                File.WriteAllLines(saveFileDialog1.FileName, list.Select(q => string.Format("{0} : {1}", q.repeat_count, q.sql)));
             }
         }
     }

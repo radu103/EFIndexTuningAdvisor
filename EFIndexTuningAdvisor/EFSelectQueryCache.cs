@@ -34,7 +34,7 @@ namespace EFIndexTuningAdvisor
 
             if (old_val != null)
             {
-                old_val.time_in_ms = (old_val.time_in_ms * old_val.repeat_count + time_ms) / (old_val.repeat_count + 1);
+                old_val.avg_time_in_ms = (old_val.avg_time_in_ms * old_val.repeat_count + time_ms) / (old_val.repeat_count + 1);
                 old_val.repeat_count += 1;
                 old_val.total_time_in_ms += time_ms;
             }
@@ -44,7 +44,7 @@ namespace EFIndexTuningAdvisor
                 new_val.sql = sqlt;
                 new_val.param = param;
                 new_val.repeat_count = 1;
-                new_val.time_in_ms = time_ms;
+                new_val.avg_time_in_ms = time_ms;
                 new_val.total_time_in_ms = time_ms;
 
                 _QueryLog.Add(new_val);

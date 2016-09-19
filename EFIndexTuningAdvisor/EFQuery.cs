@@ -10,7 +10,7 @@ namespace EFIndexTuningAdvisor
 
         public int repeat_count { get; set; }
 
-        public decimal time_in_ms { get; set; }
+        public decimal avg_time_in_ms { get; set; }
 
         public decimal total_time_in_ms { get; set; }
     }

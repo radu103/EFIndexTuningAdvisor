@@ -46,7 +46,7 @@ namespace EFIndexTuningAdvisor
 
         public static List<EFQuery> GetTopSlowestQueries(this DbContext context, int how_many = 20)
         {
-            return EFSelectQueryCache.QueryLog.OrderByDescending(q => q.time_in_ms).Take(how_many).ToList();
+            return EFSelectQueryCache.QueryLog.OrderByDescending(q => q.avg_time_in_ms).Take(how_many).ToList();
         }
 
         public static List<EFQuery> GetTopTimeConsumingQueries(this DbContext context, int how_many = 20)

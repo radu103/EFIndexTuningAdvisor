@@ -46,6 +46,10 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.seeCapturedQueriesbutton = new System.Windows.Forms.Button();
             this.RunTestQuesriesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.exportTimeConsumingQueries = new System.Windows.Forms.Button();
+            this.exportSQLForIndexCreationButton = new System.Windows.Forms.Button();
+            this.exportFrequestQueriesButton = new System.Windows.Forms.Button();
+            this.exportSlowestQueriesButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -60,18 +64,23 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.exportSQLForIndexCreationButton, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.testAdventureWorks, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox4, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.seeCapturedQueriesbutton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.exportTimeConsumingQueries, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.exportSlowestQueriesButton, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.seeCapturedQueriesbutton, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.exportFrequestQueriesButton, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1366, 671);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -93,7 +102,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 43);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(335, 625);
+            this.groupBox1.Size = new System.Drawing.Size(335, 587);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DB Indexes Missing ";
@@ -101,9 +110,10 @@
             // missingIndexesTreeView
             // 
             this.missingIndexesTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.missingIndexesTreeView.Enabled = false;
             this.missingIndexesTreeView.Location = new System.Drawing.Point(3, 18);
             this.missingIndexesTreeView.Name = "missingIndexesTreeView";
-            this.missingIndexesTreeView.Size = new System.Drawing.Size(329, 604);
+            this.missingIndexesTreeView.Size = new System.Drawing.Size(329, 566);
             this.missingIndexesTreeView.TabIndex = 0;
             // 
             // groupBox2
@@ -111,7 +121,7 @@
             this.groupBox2.Controls.Add(this.frequentQueriesListView);
             this.groupBox2.Location = new System.Drawing.Point(344, 43);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(335, 625);
+            this.groupBox2.Size = new System.Drawing.Size(335, 587);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Frequent Queries";
@@ -125,7 +135,7 @@
             this.frequentQueriesListView.Location = new System.Drawing.Point(3, 18);
             this.frequentQueriesListView.Name = "frequentQueriesListView";
             this.frequentQueriesListView.ShowItemToolTips = true;
-            this.frequentQueriesListView.Size = new System.Drawing.Size(329, 604);
+            this.frequentQueriesListView.Size = new System.Drawing.Size(329, 566);
             this.frequentQueriesListView.TabIndex = 0;
             this.frequentQueriesListView.UseCompatibleStateImageBehavior = false;
             this.frequentQueriesListView.View = System.Windows.Forms.View.Details;
@@ -144,7 +154,7 @@
             this.groupBox3.Controls.Add(this.timeConsumingQueriesListView);
             this.groupBox3.Location = new System.Drawing.Point(685, 43);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(335, 625);
+            this.groupBox3.Size = new System.Drawing.Size(335, 587);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Time Consuming Queries";
@@ -158,7 +168,7 @@
             this.timeConsumingQueriesListView.Location = new System.Drawing.Point(3, 18);
             this.timeConsumingQueriesListView.Name = "timeConsumingQueriesListView";
             this.timeConsumingQueriesListView.ShowItemToolTips = true;
-            this.timeConsumingQueriesListView.Size = new System.Drawing.Size(329, 604);
+            this.timeConsumingQueriesListView.Size = new System.Drawing.Size(329, 566);
             this.timeConsumingQueriesListView.TabIndex = 1;
             this.timeConsumingQueriesListView.UseCompatibleStateImageBehavior = false;
             this.timeConsumingQueriesListView.View = System.Windows.Forms.View.Details;
@@ -178,7 +188,7 @@
             this.groupBox4.Controls.Add(this.slowestQueriesListView);
             this.groupBox4.Location = new System.Drawing.Point(1026, 43);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(335, 625);
+            this.groupBox4.Size = new System.Drawing.Size(335, 587);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Slowest Queries";
@@ -192,7 +202,7 @@
             this.slowestQueriesListView.Location = new System.Drawing.Point(3, 18);
             this.slowestQueriesListView.Name = "slowestQueriesListView";
             this.slowestQueriesListView.ShowItemToolTips = true;
-            this.slowestQueriesListView.Size = new System.Drawing.Size(329, 604);
+            this.slowestQueriesListView.Size = new System.Drawing.Size(329, 566);
             this.slowestQueriesListView.TabIndex = 2;
             this.slowestQueriesListView.UseCompatibleStateImageBehavior = false;
             this.slowestQueriesListView.View = System.Windows.Forms.View.Details;
@@ -211,7 +221,7 @@
             // 
             this.seeCapturedQueriesbutton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.seeCapturedQueriesbutton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.seeCapturedQueriesbutton.Location = new System.Drawing.Point(416, 6);
+            this.seeCapturedQueriesbutton.Location = new System.Drawing.Point(1099, 6);
             this.seeCapturedQueriesbutton.Name = "seeCapturedQueriesbutton";
             this.seeCapturedQueriesbutton.Size = new System.Drawing.Size(191, 28);
             this.seeCapturedQueriesbutton.TabIndex = 5;
@@ -223,6 +233,55 @@
             // 
             this.RunTestQuesriesBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RunTestQuesriesBackgroundWorker_DoWork);
             this.RunTestQuesriesBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunTestQuesriesBackgroundWorker_RunWorkerCompleted);
+            // 
+            // exportTimeConsumingQueries
+            // 
+            this.exportTimeConsumingQueries.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.exportTimeConsumingQueries.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.exportTimeConsumingQueries.Location = new System.Drawing.Point(734, 638);
+            this.exportTimeConsumingQueries.Name = "exportTimeConsumingQueries";
+            this.exportTimeConsumingQueries.Size = new System.Drawing.Size(236, 28);
+            this.exportTimeConsumingQueries.TabIndex = 6;
+            this.exportTimeConsumingQueries.Text = "Export Time Consuming Queries";
+            this.exportTimeConsumingQueries.UseVisualStyleBackColor = true;
+            this.exportTimeConsumingQueries.Click += new System.EventHandler(this.exportTimeConsumingQueries_Click);
+            // 
+            // exportSQLForIndexCreationButton
+            // 
+            this.exportSQLForIndexCreationButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.exportSQLForIndexCreationButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.exportSQLForIndexCreationButton.Enabled = false;
+            this.exportSQLForIndexCreationButton.Location = new System.Drawing.Point(52, 638);
+            this.exportSQLForIndexCreationButton.Name = "exportSQLForIndexCreationButton";
+            this.exportSQLForIndexCreationButton.Size = new System.Drawing.Size(236, 28);
+            this.exportSQLForIndexCreationButton.TabIndex = 7;
+            this.exportSQLForIndexCreationButton.Text = "Export SQL for Index creation";
+            this.exportSQLForIndexCreationButton.UseVisualStyleBackColor = true;
+            this.exportSQLForIndexCreationButton.Click += new System.EventHandler(this.exportSQLForIndexCreationButton_Click);
+            // 
+            // exportFrequestQueriesButton
+            // 
+            this.exportFrequestQueriesButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.exportFrequestQueriesButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.exportFrequestQueriesButton.Location = new System.Drawing.Point(393, 638);
+            this.exportFrequestQueriesButton.Name = "exportFrequestQueriesButton";
+            this.exportFrequestQueriesButton.Size = new System.Drawing.Size(236, 28);
+            this.exportFrequestQueriesButton.TabIndex = 8;
+            this.exportFrequestQueriesButton.Text = "Export Frequent Queries";
+            this.exportFrequestQueriesButton.UseVisualStyleBackColor = true;
+            this.exportFrequestQueriesButton.Click += new System.EventHandler(this.exportFrequestQueriesButton_Click);
+            // 
+            // exportSlowestQueriesButton
+            // 
+            this.exportSlowestQueriesButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.exportSlowestQueriesButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.exportSlowestQueriesButton.Location = new System.Drawing.Point(1076, 638);
+            this.exportSlowestQueriesButton.Name = "exportSlowestQueriesButton";
+            this.exportSlowestQueriesButton.Size = new System.Drawing.Size(236, 28);
+            this.exportSlowestQueriesButton.TabIndex = 9;
+            this.exportSlowestQueriesButton.Text = "Export Slowest Queries";
+            this.exportSlowestQueriesButton.UseVisualStyleBackColor = true;
+            this.exportSlowestQueriesButton.Click += new System.EventHandler(this.exportSlowestQueriesButton_Click);
             // 
             // TestForm
             // 
@@ -262,6 +321,10 @@
         private System.Windows.Forms.ListView slowestQueriesListView;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button exportSQLForIndexCreationButton;
+        private System.Windows.Forms.Button exportTimeConsumingQueries;
+        private System.Windows.Forms.Button exportFrequestQueriesButton;
+        private System.Windows.Forms.Button exportSlowestQueriesButton;
     }
 }
 
