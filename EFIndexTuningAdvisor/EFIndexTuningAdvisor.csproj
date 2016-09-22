@@ -49,17 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbParamCollectionExtensions.cs" />
+    <Compile Include="AnalyzeGroupBys.cs" />
+    <Compile Include="AnalyzeOrderBys.cs" />
+    <Compile Include="AnalyzeJoins.cs" />
+    <Compile Include="AnalyzeWhereFilters.cs" />
     <Compile Include="EFCommandInterceptorForTuning.cs" />
     <Compile Include="EFIndexAdvices.cs" />
     <Compile Include="EFIndexAdvisorExtension.cs" />
     <Compile Include="EFQuery.cs" />
+    <Compile Include="EFQueryTableColumn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EFQueryIndexAdvice.cs" />
     <Compile Include="EFSelectQueryCache.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

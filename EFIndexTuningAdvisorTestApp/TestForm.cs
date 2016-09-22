@@ -116,7 +116,7 @@ namespace EFIndexTuningAdvisorTestApp
             if (saveFileDialog1.FileName != "" && timeConsumingQueriesListView.Tag != null)
             {
                 var list = timeConsumingQueriesListView.Tag as List<EFQuery>;
-                File.WriteAllLines(saveFileDialog1.FileName, list.Select(q => string.Format("{0} ms : {1}", Math.Round(q.total_time_in_ms, 2), q.sql)));
+                File.WriteAllLines(saveFileDialog1.FileName, list.Select(q => q.ToString()));
             }
         }
 
@@ -131,7 +131,7 @@ namespace EFIndexTuningAdvisorTestApp
             if (saveFileDialog1.FileName != "" && slowestQueriesListView.Tag != null)
             {
                 var list = slowestQueriesListView.Tag as List<EFQuery>;
-                File.WriteAllLines(saveFileDialog1.FileName, list.Select(q => string.Format("{0} ms : {1}", Math.Round(q.avg_time_in_ms, 2), q.sql)));
+                File.WriteAllLines(saveFileDialog1.FileName, list.Select(q => q.ToString()));
             }
         }
 
@@ -146,7 +146,7 @@ namespace EFIndexTuningAdvisorTestApp
             if (saveFileDialog1.FileName != "" && frequentQueriesListView.Tag != null)
             {
                 var list = frequentQueriesListView.Tag as List<EFQuery>;
-                File.WriteAllLines(saveFileDialog1.FileName, list.Select(q => string.Format("{0} : {1}", q.repeat_count, q.sql)));
+                File.WriteAllLines(saveFileDialog1.FileName, list.Select(q => q.ToString()));
             }
         }
     }

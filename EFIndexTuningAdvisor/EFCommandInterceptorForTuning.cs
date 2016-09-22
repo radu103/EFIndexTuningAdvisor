@@ -23,7 +23,7 @@ namespace EFIndexTuningAdvisor
         {
             LogInfo("ReaderExecuted", String.Format(" IsAsync: {0}, Command Text: {1}", interceptionContext.IsAsync, command.CommandText));
 
-            EFSelectQueryCache.AddQueryToLog(command.CommandText, command.Parameters, _stopwatch.ElapsedMilliseconds);
+            EFSelectQueryCache.AddQueryToLog(command.CommandText, _stopwatch.ElapsedMilliseconds);
         }
 
         public void ReaderExecuting(System.Data.Common.DbCommand command, DbCommandInterceptionContext<System.Data.Common.DbDataReader> interceptionContext)
@@ -37,7 +37,7 @@ namespace EFIndexTuningAdvisor
         {
             LogInfo("ScalarExecuted", String.Format(" IsAsync: {0}, Command Text: {1}", interceptionContext.IsAsync, command.CommandText));
 
-            EFSelectQueryCache.AddQueryToLog(command.CommandText, command.Parameters, _stopwatch.ElapsedMilliseconds);
+            EFSelectQueryCache.AddQueryToLog(command.CommandText, _stopwatch.ElapsedMilliseconds);
         }
 
         public void ScalarExecuting(System.Data.Common.DbCommand command, DbCommandInterceptionContext<object> interceptionContext)

@@ -22,15 +22,13 @@ namespace EFIndexTuningAdvisor
             System.GC.Collect();
         }
 
-        public static void AddQueryToLog(string sql, DbParameterCollection param, decimal time_ms)
+        public static void AddQueryToLog(string sql, decimal time_ms)
         {
             if (string.IsNullOrEmpty(sql)) return;
 
             var sqlt = sql.Trim();
 
-            var p_hash = param.GetParamHash();
-
-            EFQuery old_val = _QueryLog.Find(e => string.Compare(sqlt, e.sql, System.StringComparison.Ordinal) == 0 && e.param.Count == param.Count && p_hash == e.param.GetParamHash());
+            EFQuery old_val = _QueryLog.Find(e => string.Compare(sqlt, e.sql, System.StringComparison.Ordinal) == 0);
 
             if (old_val != null)
             {
@@ -42,7 +40,6 @@ namespace EFIndexTuningAdvisor
             {
                 EFQuery new_val = new EFQuery();
                 new_val.sql = sqlt;
-                new_val.param = param;
                 new_val.repeat_count = 1;
                 new_val.avg_time_in_ms = time_ms;
                 new_val.total_time_in_ms = time_ms;

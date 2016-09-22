@@ -29,6 +29,8 @@ namespace EFIndexTuningAdvisor
 
             foreach (var query in key_queries)
             {
+                query.AnalyzeQuery();
+
                 var adv = new EFQueryIndexAdvice { Query = query.ToString() };
                 QueryIndexAdvices.NewIndexAdvice(adv);
             }
