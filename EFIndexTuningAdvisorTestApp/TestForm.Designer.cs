@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.exportSQLForIndexCreationButton = new System.Windows.Forms.Button();
             this.testAdventureWorks = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.missingIndexesTreeView = new System.Windows.Forms.TreeView();
@@ -44,12 +45,11 @@
             this.slowestQueriesListView = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.seeCapturedQueriesbutton = new System.Windows.Forms.Button();
-            this.RunTestQuesriesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.exportTimeConsumingQueries = new System.Windows.Forms.Button();
-            this.exportSQLForIndexCreationButton = new System.Windows.Forms.Button();
-            this.exportFrequestQueriesButton = new System.Windows.Forms.Button();
             this.exportSlowestQueriesButton = new System.Windows.Forms.Button();
+            this.seeCapturedQueriesbutton = new System.Windows.Forms.Button();
+            this.exportFrequestQueriesButton = new System.Windows.Forms.Button();
+            this.RunTestQuesriesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -84,6 +84,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1366, 671);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // exportSQLForIndexCreationButton
+            // 
+            this.exportSQLForIndexCreationButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.exportSQLForIndexCreationButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.exportSQLForIndexCreationButton.Location = new System.Drawing.Point(52, 638);
+            this.exportSQLForIndexCreationButton.Name = "exportSQLForIndexCreationButton";
+            this.exportSQLForIndexCreationButton.Size = new System.Drawing.Size(236, 28);
+            this.exportSQLForIndexCreationButton.TabIndex = 7;
+            this.exportSQLForIndexCreationButton.Text = "Export SQL for Index creation";
+            this.exportSQLForIndexCreationButton.UseVisualStyleBackColor = true;
+            this.exportSQLForIndexCreationButton.Click += new System.EventHandler(this.exportSQLForIndexCreationButton_Click);
+            // 
             // testAdventureWorks
             // 
             this.testAdventureWorks.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -110,9 +122,9 @@
             // missingIndexesTreeView
             // 
             this.missingIndexesTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.missingIndexesTreeView.Enabled = false;
             this.missingIndexesTreeView.Location = new System.Drawing.Point(3, 18);
             this.missingIndexesTreeView.Name = "missingIndexesTreeView";
+            this.missingIndexesTreeView.ShowNodeToolTips = true;
             this.missingIndexesTreeView.Size = new System.Drawing.Size(329, 566);
             this.missingIndexesTreeView.TabIndex = 0;
             // 
@@ -217,23 +229,6 @@
             this.columnHeader6.Text = "Time (ms)";
             this.columnHeader6.Width = 80;
             // 
-            // seeCapturedQueriesbutton
-            // 
-            this.seeCapturedQueriesbutton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.seeCapturedQueriesbutton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.seeCapturedQueriesbutton.Location = new System.Drawing.Point(1099, 6);
-            this.seeCapturedQueriesbutton.Name = "seeCapturedQueriesbutton";
-            this.seeCapturedQueriesbutton.Size = new System.Drawing.Size(191, 28);
-            this.seeCapturedQueriesbutton.TabIndex = 5;
-            this.seeCapturedQueriesbutton.Text = "See captured Queries";
-            this.seeCapturedQueriesbutton.UseVisualStyleBackColor = true;
-            this.seeCapturedQueriesbutton.Click += new System.EventHandler(this.seeCapturedQueriesbutton_Click);
-            // 
-            // RunTestQuesriesBackgroundWorker
-            // 
-            this.RunTestQuesriesBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RunTestQuesriesBackgroundWorker_DoWork);
-            this.RunTestQuesriesBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunTestQuesriesBackgroundWorker_RunWorkerCompleted);
-            // 
             // exportTimeConsumingQueries
             // 
             this.exportTimeConsumingQueries.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -246,18 +241,29 @@
             this.exportTimeConsumingQueries.UseVisualStyleBackColor = true;
             this.exportTimeConsumingQueries.Click += new System.EventHandler(this.exportTimeConsumingQueries_Click);
             // 
-            // exportSQLForIndexCreationButton
+            // exportSlowestQueriesButton
             // 
-            this.exportSQLForIndexCreationButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.exportSQLForIndexCreationButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.exportSQLForIndexCreationButton.Enabled = false;
-            this.exportSQLForIndexCreationButton.Location = new System.Drawing.Point(52, 638);
-            this.exportSQLForIndexCreationButton.Name = "exportSQLForIndexCreationButton";
-            this.exportSQLForIndexCreationButton.Size = new System.Drawing.Size(236, 28);
-            this.exportSQLForIndexCreationButton.TabIndex = 7;
-            this.exportSQLForIndexCreationButton.Text = "Export SQL for Index creation";
-            this.exportSQLForIndexCreationButton.UseVisualStyleBackColor = true;
-            this.exportSQLForIndexCreationButton.Click += new System.EventHandler(this.exportSQLForIndexCreationButton_Click);
+            this.exportSlowestQueriesButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.exportSlowestQueriesButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.exportSlowestQueriesButton.Location = new System.Drawing.Point(1076, 638);
+            this.exportSlowestQueriesButton.Name = "exportSlowestQueriesButton";
+            this.exportSlowestQueriesButton.Size = new System.Drawing.Size(236, 28);
+            this.exportSlowestQueriesButton.TabIndex = 9;
+            this.exportSlowestQueriesButton.Text = "Export Slowest Queries";
+            this.exportSlowestQueriesButton.UseVisualStyleBackColor = true;
+            this.exportSlowestQueriesButton.Click += new System.EventHandler(this.exportSlowestQueriesButton_Click);
+            // 
+            // seeCapturedQueriesbutton
+            // 
+            this.seeCapturedQueriesbutton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.seeCapturedQueriesbutton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.seeCapturedQueriesbutton.Location = new System.Drawing.Point(1099, 6);
+            this.seeCapturedQueriesbutton.Name = "seeCapturedQueriesbutton";
+            this.seeCapturedQueriesbutton.Size = new System.Drawing.Size(191, 28);
+            this.seeCapturedQueriesbutton.TabIndex = 5;
+            this.seeCapturedQueriesbutton.Text = "See captured Queries";
+            this.seeCapturedQueriesbutton.UseVisualStyleBackColor = true;
+            this.seeCapturedQueriesbutton.Click += new System.EventHandler(this.seeCapturedQueriesbutton_Click);
             // 
             // exportFrequestQueriesButton
             // 
@@ -271,17 +277,10 @@
             this.exportFrequestQueriesButton.UseVisualStyleBackColor = true;
             this.exportFrequestQueriesButton.Click += new System.EventHandler(this.exportFrequestQueriesButton_Click);
             // 
-            // exportSlowestQueriesButton
+            // RunTestQuesriesBackgroundWorker
             // 
-            this.exportSlowestQueriesButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.exportSlowestQueriesButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.exportSlowestQueriesButton.Location = new System.Drawing.Point(1076, 638);
-            this.exportSlowestQueriesButton.Name = "exportSlowestQueriesButton";
-            this.exportSlowestQueriesButton.Size = new System.Drawing.Size(236, 28);
-            this.exportSlowestQueriesButton.TabIndex = 9;
-            this.exportSlowestQueriesButton.Text = "Export Slowest Queries";
-            this.exportSlowestQueriesButton.UseVisualStyleBackColor = true;
-            this.exportSlowestQueriesButton.Click += new System.EventHandler(this.exportSlowestQueriesButton_Click);
+            this.RunTestQuesriesBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RunTestQuesriesBackgroundWorker_DoWork);
+            this.RunTestQuesriesBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunTestQuesriesBackgroundWorker_RunWorkerCompleted);
             // 
             // TestForm
             // 

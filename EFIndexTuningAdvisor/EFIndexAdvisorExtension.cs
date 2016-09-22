@@ -32,6 +32,27 @@ namespace EFIndexTuningAdvisor
                 query.AnalyzeQuery();
 
                 var adv = new EFQueryIndexAdvice { Query = query.ToString() };
+
+                foreach (EFQueryTableColumn col in query.WhereClauses)
+                {
+                    adv.NewIndexNeeded = string.Format("CREATE INDEX IX_{0}_{1} ON {2}({3});", col.TableName.Replace(".", "_"), col.ColumnName, col.TableName, col.ColumnName);
+                }
+
+                foreach (EFQueryTableColumn col in query.JoinClauses)
+                {
+                    adv.NewIndexNeeded = string.Format("CREATE INDEX IX_{0}_{1} ON {2}({3});", col.TableName.Replace(".", "_"), col.ColumnName, col.TableName, col.ColumnName);
+                }
+
+                foreach (EFQueryTableColumn col in query.GroupByClauses)
+                {
+                    adv.NewIndexNeeded = string.Format("CREATE INDEX IX_{0}_{1} ON {2}({3});", col.TableName.Replace(".", "_"), col.ColumnName, col.TableName, col.ColumnName);
+                }
+
+                foreach (EFQueryTableColumn col in query.OrderByClauses)
+                {
+                    adv.NewIndexNeeded = string.Format("CREATE INDEX IX_{0}_{1} ON {2}({3});", col.TableName.Replace(".", "_"), col.ColumnName, col.TableName, col.ColumnName);
+                }
+
                 QueryIndexAdvices.NewIndexAdvice(adv);
             }
         }

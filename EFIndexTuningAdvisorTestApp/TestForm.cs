@@ -68,9 +68,28 @@ namespace EFIndexTuningAdvisorTestApp
             {
                 var suggestions = (TestResultsForDisplay)e.Result;
 
+                missingIndexesTreeView.Tag = suggestions.IndexSuggestions;
                 frequentQueriesListView.Tag = suggestions.TopFrequentQueries;
                 timeConsumingQueriesListView.Tag = suggestions.TopTimeConsumingQueries;
                 slowestQueriesListView.Tag = suggestions.TopSlowestQueries;
+
+                // index suggestions
+                foreach (var q in suggestions.IndexSuggestions)
+                {
+                    if (q.IndexesNeeded.Count > 0)
+                    {
+                        var node = missingIndexesTreeView.Nodes.Add(q.Query);
+                        node.Tag = q;
+                        node.ToolTipText = q.Query;
+
+                        foreach (string idx_adv in q.IndexesNeeded)
+                        {
+                            var inode = node.Nodes.Add(idx_adv);
+                            inode.Tag = idx_adv;
+                            inode.ToolTipText = idx_adv;
+                        }
+                    }
+                }
 
                 // frequent queries
                 foreach (var q in suggestions.TopFrequentQueries)
@@ -103,6 +122,28 @@ namespace EFIndexTuningAdvisorTestApp
 
         private void exportSQLForIndexCreationButton_Click(object sender, EventArgs e)
         {
+            var saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "SQL File|*.sql";
+            saveFileDialog1.Title = "Save an SQL File";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "" && missingIndexesTreeView.Tag != null)
+            {
+                var list = missingIndexesTreeView.Tag as List<EFQueryIndexAdvice>;
+
+                var all_idx = new List<string>();
+                foreach (EFQueryIndexAdvice adv in list)
+                {
+                    foreach (string idx in adv.IndexesNeeded)
+                    {
+                        if (all_idx.IndexOf(idx) < 0)
+                            all_idx.Add(idx);
+                    }
+                }
+
+                File.WriteAllLines(saveFileDialog1.FileName, all_idx);
+            }
         }
 
         private void exportTimeConsumingQueries_Click(object sender, EventArgs e)
