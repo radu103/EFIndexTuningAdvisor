@@ -15,7 +15,7 @@ namespace EFIndexTuningAdvisor
             try
             {
                 var pos_s = sql.IndexOf("FROM");
-                if(pos_s < 0) return list;
+                if (pos_s < 0) return list;
 
                 var pos1 = sql.IndexOf("INNER JOIN");
                 var pos2 = sql.IndexOf("LEFT OUTER JOIN");
@@ -64,10 +64,6 @@ namespace EFIndexTuningAdvisor
                     {
                         var ww = waux[i].Split(new string[] { "=", ">=", "<=", ">", "<", "LIKE" }, StringSplitOptions.RemoveEmptyEntries);
                         var left = ww[0].Trim();
-                        if (ww.Length == 1)
-                        {
-                        }
-
                         var right = ww[1].Trim();
 
                         if (left.IndexOf(fcol.TableAlias) >= 0)

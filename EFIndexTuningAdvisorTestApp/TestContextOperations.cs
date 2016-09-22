@@ -19,7 +19,7 @@ namespace EFIndexTuningAdvisorTestApp
 
                 var a1 = ctx.Customers.Include("City").Include("Person").Include("CustomerCategory").Where(c => c.CreditLimit > 0).ToList();
                 a1 = ctx.Customers.Include("CustomerCategory").Where(c => c.CreditLimit > 0).OrderByDescending(c => c.CreditLimit).ToList();
-                a1 = ctx.Customers.Include("City").Include("CustomerCategory").Where(c => c.City.LatestRecordedPopulation > 100000).OrderByDescending(c => c.CreditLimit).ToList();
+                a1 = ctx.Customers.Include("City").OrderByDescending(c => c.CreditLimit).ToList();
 
                 repeat += 1;
             } while (repeat < 3);
