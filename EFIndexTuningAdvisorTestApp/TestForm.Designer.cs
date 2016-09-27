@@ -49,7 +49,7 @@
             this.exportSlowestQueriesButton = new System.Windows.Forms.Button();
             this.seeCapturedQueriesbutton = new System.Windows.Forms.Button();
             this.exportFrequestQueriesButton = new System.Windows.Forms.Button();
-            this.RunTestQuesriesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.RunTestQueriesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -277,10 +277,10 @@
             this.exportFrequestQueriesButton.UseVisualStyleBackColor = true;
             this.exportFrequestQueriesButton.Click += new System.EventHandler(this.exportFrequestQueriesButton_Click);
             // 
-            // RunTestQuesriesBackgroundWorker
+            // RunTestQueriesBackgroundWorker
             // 
-            this.RunTestQuesriesBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RunTestQuesriesBackgroundWorker_DoWork);
-            this.RunTestQuesriesBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunTestQuesriesBackgroundWorker_RunWorkerCompleted);
+            this.RunTestQueriesBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RunTestQuesriesBackgroundWorker_DoWork);
+            this.RunTestQueriesBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunTestQuesriesBackgroundWorker_RunWorkerCompleted);
             // 
             // TestForm
             // 
@@ -309,7 +309,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button seeCapturedQueriesbutton;
-        private System.ComponentModel.BackgroundWorker RunTestQuesriesBackgroundWorker;
+        private System.ComponentModel.BackgroundWorker RunTestQueriesBackgroundWorker;
         private System.Windows.Forms.TreeView missingIndexesTreeView;
         private System.Windows.Forms.ListView frequentQueriesListView;
         private System.Windows.Forms.ColumnHeader columnHeader1;

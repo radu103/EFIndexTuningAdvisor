@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CapturedQueriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CapturedQueriesForm.Designer.cs">
+      <DependentUpon>CapturedQueriesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestContextOperations.cs" />
     <Compile Include="TestResultsForDisplay.cs" />
     <Compile Include="TestForm.cs">
@@ -64,6 +70,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CapturedQueriesForm.resx">
+      <DependentUpon>CapturedQueriesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>

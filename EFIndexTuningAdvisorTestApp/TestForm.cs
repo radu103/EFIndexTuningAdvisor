@@ -24,12 +24,13 @@ namespace EFIndexTuningAdvisorTestApp
 
             tableLayoutPanel1.Enabled = false;
 
-            RunTestQuesriesBackgroundWorker.RunWorkerAsync();
+            RunTestQueriesBackgroundWorker.RunWorkerAsync();
         }
 
         private void seeCapturedQueriesbutton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("To Do...");
+            var form = new CapturedQueriesForm();
+            form.ShowDialog();
         }
 
         private void RunTestQuesriesBackgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
