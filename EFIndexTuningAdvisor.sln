@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFIndexTuningAdvisor", "EFI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WideWorldImportersDomain", "WideWorldImportersDomain\WideWorldImportersDomain.csproj", "{B4787B64-F405-4A95-831D-0B1C27210F92}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget_Packages", "Nuget_Packages", "{564EE693-6772-4C0C-B828-E4670C6F49F7}"
+	ProjectSection(SolutionItems) = preProject
+		EFIndexTuningAdvisor.0.2.0.nupkg = EFIndexTuningAdvisor.0.2.0.nupkg
+		EFIndexTuningAdvisor.0.3.0.nupkg = EFIndexTuningAdvisor.0.3.0.nupkg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
